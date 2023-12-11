@@ -1,0 +1,26 @@
+{
+    "-NlF7c4I9ogh5XKkINBb": {
+      "itemName": "Buffalo Wings",
+      "itemPrice": "$14.89",
+      "item_id": "-NlF7c4I9ogh5XKkINBb",
+      "firebaseKey": "-NlF7c4I9ogh5XKkINBb"
+    },
+    "-NlF7c4JFiVcVrZSjm2l": {
+      "itemName": "Deluxe Pizza",
+      "itemPrice": "$13.34",
+      "item_id": "-NlF7c4JFiVcVrZSjm2l",
+      "firebaseKey": "-NlF7c4JFiVcVrZSjm2l"
+    },
+    "-NlF7c4K8lBGEkBTxyGU": {
+      "itemName": "Vegetarian",
+      "itemPrice": "$12.98",
+      "item_id": "-NlF7c4K8lBGEkBTxyGU",
+      "firebaseKey": "-NlF7c4K8lBGEkBTxyGU"
+    },
+    "-NlF7c4Ll3nVPeKNkBAi": {
+      "itemName": "Cheese pizza",
+      "itemPrice": "$12.55",
+      "item_id": "-NlF7c4Ll3nVPeKNkBAi",
+      "firebaseKey": "-NlF7c4Ll3nVPeKNkBAi"
+    }
+  }
