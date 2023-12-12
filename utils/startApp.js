@@ -1,6 +1,6 @@
-import domBuilder from './domBuilder';
+import domBuilder from '../components/shared/domBuilder';
 // import navigationEvents from '../events/navigationEvents';
-import navBar from './Navbar';
+import navBar from '../components/shared/navbar';
 import logoutButton from '../components/logoutButton';
 // import domEvents from '../events/domEvents';
 // import formEvents from '../events/formEvents';
