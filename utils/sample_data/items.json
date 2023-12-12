@@ -3,24 +3,28 @@
       "itemName": "Buffalo Wings",
       "itemPrice": "$14.89",
       "item_id": "-NlF7c4I9ogh5XKkINBb",
-      "firebaseKey": "-NlF7c4I9ogh5XKkINBb"
+      "firebaseKey": "-NlF7c4I9ogh5XKkINBb",
+      "order_id": "-NlEnOblsfzpl2wle9Ss"
     },
     "-NlF7c4JFiVcVrZSjm2l": {
       "itemName": "Deluxe Pizza",
       "itemPrice": "$13.34",
       "item_id": "-NlF7c4JFiVcVrZSjm2l",
-      "firebaseKey": "-NlF7c4JFiVcVrZSjm2l"
+      "firebaseKey": "-NlF7c4JFiVcVrZSjm2l",
+      "order_id": "-NlEnObnkpQMhLE9O5WQ"
     },
     "-NlF7c4K8lBGEkBTxyGU": {
       "itemName": "Vegetarian",
       "itemPrice": "$12.98",
       "item_id": "-NlF7c4K8lBGEkBTxyGU",
-      "firebaseKey": "-NlF7c4K8lBGEkBTxyGU"
+      "firebaseKey": "-NlF7c4K8lBGEkBTxyGU",
+      "order_id": "-NlEnObpApBjvSel2H-W"
     },
     "-NlF7c4Ll3nVPeKNkBAi": {
       "itemName": "Cheese pizza",
       "itemPrice": "$12.55",
       "item_id": "-NlF7c4Ll3nVPeKNkBAi",
-      "firebaseKey": "-NlF7c4Ll3nVPeKNkBAi"
+      "firebaseKey": "-NlF7c4Ll3nVPeKNkBAi",
+      "order_id": "-NlEnObrCpvMaldXo4nu"
     }
   }

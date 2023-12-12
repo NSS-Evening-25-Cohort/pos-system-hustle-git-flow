@@ -5,7 +5,8 @@
       "customerPhone": "455-778-7367",
       "customerEmail": "vposer0@shareasale.com",
       "orderType": "phone",
-      "firebaseKey": "-NlEnOblsfzpl2wle9Ss"
+      "firebaseKey": "-NlEnOblsfzpl2wle9Ss",
+      "customerId": 1
     },
     "-NlEnObnkpQMhLE9O5WQ": {
       "order": "Tribute",
@@ -13,7 +14,8 @@
       "customerPhone": "594-120-8262",
       "customerEmail": "dpask1@tumblr.com",
       "orderType": "in-person",
-      "firebaseKey": "-NlEnObnkpQMhLE9O5WQ"
+      "firebaseKey": "-NlEnObnkpQMhLE9O5WQ",
+      "customerId": 2
     },
     "-NlEnObpApBjvSel2H-W": {
       "order": "Mike's Murder",
@@ -21,7 +23,8 @@
       "customerPhone": "582-141-5995",
       "customerEmail": "cbriat2@bbb.org",
       "orderType": "phone",
-      "firebaseKey": "-NlEnObpApBjvSel2H-W"
+      "firebaseKey": "-NlEnObpApBjvSel2H-W",
+      "customerId": 3
     },
     "-NlEnObrCpvMaldXo4nu": {
       "order": "Color Wheel, The",
@@ -29,6 +32,7 @@
       "customerPhone": "317-671-8441",
       "customerEmail": "gesselen3@last.fm",
       "orderType": "in-person",
-      "firebaseKey": "-NlEnObrCpvMaldXo4nu"
+      "firebaseKey": "-NlEnObrCpvMaldXo4nu",
+      "customerId": 4
     }
   }
