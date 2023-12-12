@@ -6,7 +6,7 @@
       "customerEmail": "vposer0@shareasale.com",
       "orderType": "phone",
       "firebaseKey": "-NlEnOblsfzpl2wle9Ss",
-      "customerId": 1
+      "cid": 1
     },
     "-NlEnObnkpQMhLE9O5WQ": {
       "order": "Tribute",
@@ -15,7 +15,7 @@
       "customerEmail": "dpask1@tumblr.com",
       "orderType": "in-person",
       "firebaseKey": "-NlEnObnkpQMhLE9O5WQ",
-      "customerId": 2
+      "cid": 2
     },
     "-NlEnObpApBjvSel2H-W": {
       "order": "Mike's Murder",
@@ -24,7 +24,7 @@
       "customerEmail": "cbriat2@bbb.org",
       "orderType": "phone",
       "firebaseKey": "-NlEnObpApBjvSel2H-W",
-      "customerId": 3
+      "cid": 3
     },
     "-NlEnObrCpvMaldXo4nu": {
       "order": "Color Wheel, The",
@@ -33,6 +33,6 @@
       "customerEmail": "gesselen3@last.fm",
       "orderType": "in-person",
       "firebaseKey": "-NlEnObrCpvMaldXo4nu",
-      "customerId": 4
+      "cid": 4
     }
   }
