@@ -3,23 +3,25 @@ const formEvents = (user) => {
     // SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
-        name: document.querySelector('#name').value,
-        customerOrder: document.querySelector('#customerOrder').value,
+        order: document.querySelector('#order').value,
+        customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
-        itemType: document.querySelector('#itemType').value,
+        orderType: document.querySelector('#orderType').value,
+        orderStatus: document.querySelector('#orderStatus').checked,
         user: user.uid
       };
       payload();
     }
 
-    // EDITING ORDER
+    // EDIT ORDER
     if (e.target.id.includes('edit-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
-        name: document.querySelector('#name').value,
-        customerOrder: document.querySelector('#customerOrder').value,
+        order: document.querySelector('#order').value,
+        customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
-        itemType: document.querySelector('#itemType').value,
+        orderType: document.querySelector('#orderType').value,
+        orderStatus: document.querySelector('#orderStatus').checked,
         user: user.uid,
         firebaseKey,
       };
@@ -31,7 +33,7 @@ const formEvents = (user) => {
       const payload = {
         itemName: document.querySelector('#itemName').value,
         itemPrice: document.querySelector('#itemPrice').value,
-
+        // Order: document.querySelector('#Order').value
       };
       payload();
     }
@@ -42,7 +44,7 @@ const formEvents = (user) => {
       const payload = {
         itemName: document.querySelector('#itemName').value,
         itemPrice: document.querySelector('#itemPrice').value,
-        user: user.uid,
+        // Order: document.querySelector('#Order').value,
         firebaseKey,
       };
       payload();
