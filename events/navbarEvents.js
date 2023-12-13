@@ -1,4 +1,5 @@
 import { signOut } from '../utils/auth';
+import vieworders from '../pages/ViewOrders';
 
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
@@ -6,7 +7,9 @@ const navbarEvents = () => {
   document.querySelector('#home').addEventListener('click', () => {
 
   });
-
+  document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
+    vieworders();
+  });
   document.querySelector('#create-order-button').addEventListener('click', () => {
 
   });
