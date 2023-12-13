@@ -3,8 +3,8 @@ import client from '../utils/client';
 const endpoint = client.databaseURL;
 
 // TODO: GET Customer
-const getCustomer = (cid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/customer.json?orderBy"cid"&equalTo="${cid}"`, {
+const getCustomer = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/customer.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

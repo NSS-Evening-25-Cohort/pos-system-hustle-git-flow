@@ -1,4 +1,6 @@
 import { signOut } from '../utils/auth';
+import vieworders from '../pages/ViewOrders';
+import { getCustomer } from '../api/customerData';
 
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
@@ -12,7 +14,7 @@ const navbarEvents = () => {
   });
 
   document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
-
+    getCustomer().then(vieworders);
   });
 
   document.querySelector('#viewRevenuesBtn').addEventListener('click', () => {
