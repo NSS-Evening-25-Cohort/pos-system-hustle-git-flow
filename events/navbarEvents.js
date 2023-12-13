@@ -3,6 +3,10 @@ import { signOut } from '../utils/auth';
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
+  document.querySelector('#home').addEventListener('click', () => {
+
+  });
+
   document.querySelector('#create-order-button').addEventListener('click', () => {
 
   });
