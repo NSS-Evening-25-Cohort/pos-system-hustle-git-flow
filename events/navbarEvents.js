@@ -2,7 +2,7 @@ import { signOut } from '../utils/auth';
 import vieworders from '../pages/ViewOrders';
 import { getCustomer } from '../api/customerData';
 
-const navbarEvents = (customer) => {
+const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
   document.querySelector('#home').addEventListener('click', () => {
@@ -14,11 +14,7 @@ const navbarEvents = (customer) => {
   });
 
   document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
-    if (customer && customer.cid) {
-      getCustomer(customer.cid).then(vieworders);
-    } else {
-      console.error("Invalid customer object or missing 'cid' property");
-    }
+    getCustomer().then(vieworders);
   });
 
   document.querySelector('#viewRevenuesBtn').addEventListener('click', () => {

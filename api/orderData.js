@@ -4,7 +4,7 @@ const endpoint = client.databaseURL;
 
 // TODO: GET Order
 const getOrder = (cid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/order.json?orderBy"cid"andequalTo="${cid}"`, {
+  fetch(`${endpoint}/order.json?orderBy"cid"&equalTo="${cid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
