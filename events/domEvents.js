@@ -1,14 +1,23 @@
+import { deleteSingleOrder, getOrder } from '../api/orderData';
+import createEditOrder from '../components/form/createEditOrder';
+import viewOrders from '../pages/viewOrders';
+
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     if (e.target.id.includes('delete-order')) {
       // eslint-disable-next-line no-alert
-      if (window.confirm('Want to delete?')) {
+      if (window.confirm('Want to delete order?')) {
         console.warn('CLICKED DELETE ORDER', e.target.id);
+        const [, firebaseKey] = e.target.split('--');
+
+        deleteSingleOrder(firebaseKey).then(() => {
+          getOrder().then(viewOrders);
+        });
       }
     }
     // ADD ORDER
     if (e.target.id.includes('add-order-btn')) {
-      console.warn();
+      createEditOrder({});
     }
     // EDIT ORDER
     if (e.target.id.includes('edit-order-btn')) {

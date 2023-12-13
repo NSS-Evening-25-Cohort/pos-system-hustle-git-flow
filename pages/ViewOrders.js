@@ -1,17 +1,17 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
-const vieworders = (array) => {
+const viewOrders = (array) => {
   clearDom();
   let domString = '';
   array.forEach((item) => {
     domString += `<div class="card" style="width: 18rem;">
     <div class="card-body1">
-      <h5 class="card-title">${item.order}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">${item.orderStatus}</h6>
-      <p class="card-text">${item.customerPhone}</p>
-      <p class="card-text">${item.customerEmail}</p>
-      <p class="card-text">${item.orderType}</p>
+      <h5 class="card-header">Order:${item.order}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Fulfilled?${item.orderStatus}</h6>
+      <p class="card-text">Cust Phone:${item.customerPhone}</p>
+      <p class="card-text">Cust Email:${item.customerEmail}</p>
+      <p class="card-text">Order Type:${item.orderType}</p>
       <a href="#" id="orderdetails_${item.firebaseKey}" class="card-link">details</a>
       <a href="#" id="editorder_${item.firebaseKey}" class="card-link">edit</a>
       <a href="#" id="deleteorder_${item.firebaseKey}" class="card-link">delete</a>
@@ -21,7 +21,7 @@ const vieworders = (array) => {
   renderToDOM('#store', domString);
 };
 
-export default vieworders;
+export default viewOrders;
 
 // import renderToDOM from '../utils/renderToDom';
 // import clearDom from '../utils/clearDom';
