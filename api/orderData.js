@@ -4,22 +4,22 @@ const endpoint = client.databaseURL;
 
 // TODO: GET Order
 const getOrder = (cid) => new Promise((resolve, reject) => {
-    fetch(`${endpoint}/order.json?orderBy"cid"andequalTo="${cid}"`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+  fetch(`${endpoint}/order.json?orderBy"cid"andequalTo="${cid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
       }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          resolve(Object.values(data));
-        } else {
-          resolve([]);
-        }
-      })
-      .catch(reject);
-  });
+    .catch(reject);
+});
 // TODO: DELETE Order
 const deleteSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/order/${firebaseKey}.json`, {

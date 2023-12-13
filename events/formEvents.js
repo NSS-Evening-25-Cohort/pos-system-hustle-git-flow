@@ -24,7 +24,7 @@ const formEvents = (user) => {
         firebaseKey,
       };
       payload();
-    };
+    }
 
     // SUBMIT ITEM
     if (e.target.id.includes('submit-item')) {
