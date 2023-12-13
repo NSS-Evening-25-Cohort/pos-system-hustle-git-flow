@@ -3,11 +3,15 @@ import { signOut } from '../utils/auth';
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
-  document.querySelector('#create-order-button').addEventListener('click', () => {
+  document.querySelector('#createOrderBtn').addEventListener('click', () => {
 
   });
 
-  document.querySelector('#create-item-button').addEventListener('click', () => {
+  document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
+
+  });
+
+  document.querySelector('#viewRevenuesBtn').addEventListener('click', () => {
 
   });
 };
