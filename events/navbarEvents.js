@@ -1,6 +1,6 @@
 import { signOut } from '../utils/auth';
-import vieworders from '../pages/ViewOrders';
 import { getCustomer } from '../api/customerData';
+import viewOrders from '../pages/viewOrders';
 
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
@@ -8,13 +8,16 @@ const navbarEvents = () => {
   document.querySelector('#home').addEventListener('click', () => {
 
   });
+  document.querySelector('#all-orders').addEventListener('click', () => {
+    getCustomer().then(viewOrders);
+  });
 
   document.querySelector('#createOrderBtn').addEventListener('click', () => {
 
   });
 
   document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
-    getCustomer().then(vieworders);
+    getCustomer().then(viewOrders);
   });
 
   document.querySelector('#viewRevenuesBtn').addEventListener('click', () => {
