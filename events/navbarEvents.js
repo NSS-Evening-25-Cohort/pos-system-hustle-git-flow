@@ -1,6 +1,7 @@
 import { signOut } from '../utils/auth';
 import { getCustomer } from '../api/customerData';
-import viewOrders from '../pages/viewOrder';
+import viewOrders from '../pages/viewOrders';
+import createEditOrder from '../components/form/createEditOrder';
 
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
@@ -13,7 +14,11 @@ const navbarEvents = () => {
   });
 
   document.querySelector('#createOrderBtn').addEventListener('click', () => {
+    createEditOrder();
+  });
 
+  document.querySelector('#create-order').addEventListener('click', () => {
+    createEditOrder();
   });
 
   document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
