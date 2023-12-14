@@ -1,6 +1,5 @@
-import { deleteSingleOrder, getOrder } from '../api/orderData';
-import createEditOrder from '../components/form/createEditOrder';
-import viewOrders from '../pages/viewOrders';
+import { createOrder, deleteSingleOrder, getOrder } from '../api/orderData';
+import viewOrders from '../pages/viewOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -17,7 +16,7 @@ const domEvents = () => {
     }
     // ADD ORDER
     if (e.target.id.includes('add-order-btn')) {
-      createEditOrder({});
+      createOrder({});
     }
     // EDIT ORDER
     if (e.target.id.includes('edit-order-btn')) {
