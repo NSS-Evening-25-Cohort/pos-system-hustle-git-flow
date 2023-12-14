@@ -1,6 +1,6 @@
 import { deleteSingleOrder, getOrder } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
-import viewOrders from '../pages/viewOrders';
+import viewOrders from '../pages/viewOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {

@@ -1,6 +1,6 @@
 import { signOut } from '../utils/auth';
 import { getCustomer } from '../api/customerData';
-import viewOrders from '../pages/viewOrders';
+import viewOrders from '../pages/viewOrder';
 
 const navbarEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
