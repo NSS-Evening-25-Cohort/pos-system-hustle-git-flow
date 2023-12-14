@@ -1,6 +1,6 @@
-import { deleteSingleOrder, getOrder } from '../api/orderData';
+import { deleteSingleOrder, getOrder, getSingleOrder } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
-import viewOrders from '../pages/viewOrders';
+import viewOrders from '../pages/viewOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -21,7 +21,9 @@ const domEvents = () => {
     }
     // EDIT ORDER
     if (e.target.id.includes('edit-order-btn')) {
-      // const [, firebaseKey] = e.target.id.split('--');
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleOrder(firebaseKey).then((orderObj) => createEditOrder(orderObj));
     }
     // DELETE ITEM
     if (e.target.id.includes('delete-item')) {

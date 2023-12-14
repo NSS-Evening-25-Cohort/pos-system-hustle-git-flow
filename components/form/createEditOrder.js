@@ -3,7 +3,7 @@ import renderToDOM from '../../utils/renderToDom';
 
 const createEditOrder = (obj = {}) => {
   clearDom();
-  const domString = `<form id="createEditItem">
+  const domString = `<form id="createEditOrder">
   <div class="form-container" >
     <div class="mb-3">
       <label for="order" class="form-label">Order Name</label>

@@ -14,7 +14,7 @@ const formEvents = (user) => {
     }
 
     // EDIT ORDER
-    if (e.target.id.includes('edit-order')) {
+    if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         order: document.querySelector('#order').value,
