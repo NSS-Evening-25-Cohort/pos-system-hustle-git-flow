@@ -3,7 +3,8 @@ import renderToDOM from '../../utils/renderToDom';
 
 const createEditOrder = (obj = {}) => {
   clearDom();
-  const domString = `<form id="createEditItem">
+  const domString = `
+  <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   <div class="form-container" >
     <div class="mb-3">
       <label for="order" class="form-label">Order Name</label>
@@ -17,13 +18,13 @@ const createEditOrder = (obj = {}) => {
       <label for="customerEmail" class="form-label">Customer Email</label>
       <input type="text" class="form-control" id="customerEmail" placeholder="Enter Customer Email Here" value="${obj.customerEmail || ''}" required>
     </div>
-    <select class="form-select id="orderType" form-select-lg mb-3" aria-label="select example" required>
+    <select class="form-select" id="orderType" form-select-lg mb-3" aria-label="select example" required>
       <option selected>Select Order Type</option>
       <option value="phone">PHONE</option>
       <option value="in-person">IN-PERSON</option>
     </select>
   </div>
-  <button type="submit" class="btn btn-success mt-3">ADD/EDIT ITEM</button>
+  <button type="submit" class="btn btn-success mt-3">ADD/EDIT ORDER</button>
   </form>`;
 
   renderToDOM('#form-container', domString);
