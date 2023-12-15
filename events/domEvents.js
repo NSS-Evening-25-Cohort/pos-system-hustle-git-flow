@@ -17,7 +17,7 @@ const domEvents = () => {
     }
     // ADD ORDER
     if (e.target.id.includes('add-order-btn')) {
-      createEditOrder({});
+      createOrder({});
     }
     // EDIT ORDER
     if (e.target.id.includes('edit-order')) {
