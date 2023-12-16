@@ -1,5 +1,6 @@
+import { deleteSingleCustomer } from '../api/customerData';
 import {
-  createOrder, deleteSingleOrder, getOrder, getSingleOrder
+  createOrder, getOrder, getSingleOrder
 } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
@@ -12,7 +13,7 @@ const domEvents = () => {
         console.warn('CLICKED DELETE ORDER', e.target.id);
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteSingleOrder(firebaseKey).then(() => {
+        deleteSingleCustomer(firebaseKey).then(() => {
           getOrder().then(viewOrders);
         });
       }
