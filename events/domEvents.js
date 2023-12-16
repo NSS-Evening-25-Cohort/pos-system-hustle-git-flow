@@ -1,14 +1,9 @@
-import { deleteSingleCustomer } from '../api/customerData';
 import {
-<<<<<<< HEAD
-  createOrder, getOrder, getSingleOrder
-=======
-  createOrder, deleteSingleOrder, getOrder,
->>>>>>> 68981f05987f2ba7d8d736584e8bcd18a6ff55be
+  createOrder, getOrder,
 } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
-import { getSingleCustomer } from '../api/customerData';
+import { deleteSingleCustomer, getSingleCustomer } from '../api/customerData';
 import getOrderDetails from '../api/mergedData';
 import orderdetails from '../pages/OrderDetails';
 
