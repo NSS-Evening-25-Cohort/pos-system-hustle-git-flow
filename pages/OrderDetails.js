@@ -5,10 +5,6 @@ const orderdetails = (object) => {
   clearDom();
 
   // Check if object and orderObject are defined
-  if (!object || !object.orderObject) {
-    console.error('Invalid input. Expected an object with orderObject property.');
-    return;
-  }
 
   const domString = `<div class="card" style="width: 18rem;">
     <div class="card-body">

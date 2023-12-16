@@ -1,5 +1,4 @@
 import { createCustomer, getCustomer, updateCustomer } from '../api/customerData';
-import { updateOrder } from '../api/orderData';
 import viewOrders from '../pages/viewOrder';
 
 const formEvents = () => {
@@ -25,18 +24,18 @@ const formEvents = () => {
       });
     }
 
-    // EDIT ORDER
-    if (e.target.id.includes('edit-order')) {
+    // EDIT CUSTOMER ORDER
+    if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         order: document.querySelector('#order').value,
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
-        // orderType: document.querySelector('#orderType').value,
-        // orderStatus: document.querySelector('#orderStatus').checked,
+        orderType: document.querySelector('#orderType').value,
+        orderStatus: true,
         firebaseKey,
       };
-      updateOrder(payload).then(() => {
+      updateCustomer(payload).then(() => {
         getCustomer().then(viewOrders);
       });
     }
