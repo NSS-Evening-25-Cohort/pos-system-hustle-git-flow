@@ -4,6 +4,8 @@ import {
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
 import { getSingleCustomer } from '../api/customerData';
+import getOrderDetails from '../api/mergedData';
+import orderdetails from '../pages/OrderDetails';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -39,6 +41,11 @@ const domEvents = () => {
       } else {
         console.error('Firebase key not found.');
       }
+    }
+    if (e.target.id.includes('orderdetails')) {
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getOrderDetails(firebaseKey).then(orderdetails);
     }
     // // DELETE ITEM
     // if (e.target.id.includes('delete-item')) {
