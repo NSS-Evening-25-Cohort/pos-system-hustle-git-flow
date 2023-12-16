@@ -11,12 +11,12 @@ const formEvents = () => {
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: document.querySelector('#orderStatus').checked,
       };
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
         updateOrder(patchPayload).then(() => {
+          // FIXME: THIS IS GETTING ADDED TO ORDER NODE IN FIREBASE. MAY NEED TO CHANGE PROMISE API SO IT GOES TO THE CORRECT NODE AND RENDERS THE CORRECT INFO.
           getOrder().then(viewOrders);
         });
       });
