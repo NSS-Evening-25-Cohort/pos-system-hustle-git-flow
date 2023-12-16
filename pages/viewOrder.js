@@ -1,5 +1,5 @@
 import clearDom from '../utils/clearDom';
-import renderToDOM from '../utils/renderToDom';
+import renderToDOM from '../utils/renderToDOM';
 
 const viewOrders = (array) => {
   clearDom();
