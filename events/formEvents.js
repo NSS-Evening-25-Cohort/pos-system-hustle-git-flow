@@ -17,9 +17,11 @@ const formEvents = () => {
       createCustomer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateCustomer(patchPayload).then(() => {
-          getCustomer().then(viewOrders);
-        });
+        updateCustomer(patchPayload).then(() => getCustomer())
+          .then(viewOrders)
+          .catch((error) => {
+            console.error('Error:', error);
+          });
       });
     }
 

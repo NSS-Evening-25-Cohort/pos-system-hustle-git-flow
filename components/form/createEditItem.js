@@ -14,7 +14,7 @@ const createEditItem = (obj = {}) => {
       <input type="text" class="form-control" id="itemType" value="${obj.itemType || ''}" placeholder="Enter Item Type Here" required>
     </div>
   </div>
-  <button type="submit" class="btn btn-success mt-3">ADD/EDIT ITEM</button>
+  <button type="submit" id="submit-order" class="btn btn-success mt-3">ADD/EDIT ITEM</button>
   </form>`;
 
   renderToDOM('#form-container', domString);
