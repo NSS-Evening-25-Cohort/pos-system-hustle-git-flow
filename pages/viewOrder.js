@@ -8,7 +8,6 @@ const viewOrders = (array) => {
     domString += `<div class="card" style="width: 18rem;">
     <div class="card-body1">
       <h5 class="card-header">Order:${item.order}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Fulfilled?${item.orderStatus}</h6>
       <p class="card-text">Cust Phone:${item.customerPhone}</p>
       <p class="card-text">Cust Email:${item.customerEmail}</p>
       <p class="card-text">Order Type:${item.orderType}</p>

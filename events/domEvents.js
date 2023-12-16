@@ -1,8 +1,11 @@
 import {
-  createOrder, deleteSingleOrder, getOrder, getSingleOrder
+  createOrder, deleteSingleOrder, getOrder,
 } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
+import { getSingleCustomer } from '../api/customerData';
+import getOrderDetails from '../api/mergedData';
+import orderdetails from '../pages/OrderDetails';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -23,10 +26,26 @@ const domEvents = () => {
     }
     // EDIT ORDER
     if (e.target.id.includes('edit-order')) {
-      console.warn('LOOK AT ME');
+      const [, firebaseKey] = e.target.id.split('--') || [];
+
+      if (firebaseKey) {
+        getSingleCustomer(firebaseKey).then((orderObj) => {
+          if (orderObj) {
+            createEditOrder(orderObj);
+          } else {
+            console.error('Order object not found.');
+          }
+        }).catch((error) => {
+          console.error('Error fetching order:', error);
+        });
+      } else {
+        console.error('Firebase key not found.');
+      }
+    }
+    if (e.target.id.includes('orderdetails')) {
       const [, firebaseKey] = e.target.id.split('--');
 
-      getSingleOrder(firebaseKey).then((orderObj) => createEditOrder(orderObj));
+      getOrderDetails(firebaseKey).then(orderdetails);
     }
     // // DELETE ITEM
     // if (e.target.id.includes('delete-item')) {
