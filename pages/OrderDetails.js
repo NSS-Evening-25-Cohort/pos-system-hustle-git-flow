@@ -1,4 +1,4 @@
-import renderToDOM from '../utils/renderToDom';
+import renderToDOM from '../utils/renderToDOM';
 import clearDom from '../utils/clearDom';
 
 const orderdetails = (item) => {

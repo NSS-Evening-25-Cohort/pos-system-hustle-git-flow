@@ -23,7 +23,7 @@ const viewOrders = (array) => {
 
 export default viewOrders;
 
-// import renderToDOM from '../utils/renderToDom';
+// import renderToDOM from '../utils/renderToDOM';
 // import clearDom from '../utils/clearDom';
 
 // const vieworders = (item) => {
