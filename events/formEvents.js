@@ -1,23 +1,24 @@
-import { createOrder, getOrder, updateOrder } from '../api/orderData';
+import { createCustomer, getCustomer, updateCustomer } from '../api/customerData';
+import { updateOrder } from '../api/orderData';
 import viewOrders from '../pages/viewOrder';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
-    // SUBMIT ORDER
+    // SUBMIT CUSTOMER ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
         order: document.querySelector('#order').value,
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
+        orderStatus: true,
       };
-      createOrder(payload).then(({ name }) => {
+      createCustomer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateOrder(patchPayload).then(() => {
-          // FIXME: THIS IS GETTING ADDED TO ORDER NODE IN FIREBASE. MAY NEED TO CHANGE PROMISE API SO IT GOES TO THE CORRECT NODE AND RENDERS THE CORRECT INFO.
-          getOrder().then(viewOrders);
+        updateCustomer(patchPayload).then(() => {
+          getCustomer().then(viewOrders);
         });
       });
     }
@@ -34,7 +35,7 @@ const formEvents = () => {
         firebaseKey,
       };
       updateOrder(payload).then(() => {
-        getOrder().then(viewOrders);
+        getCustomer().then(viewOrders);
       });
     }
 
