@@ -1,9 +1,9 @@
 import {
-  createOrder, getOrder,
+  createOrder,
 } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
-import { deleteSingleCustomer, getSingleCustomer } from '../api/customerData';
+import { deleteSingleCustomer, getCustomer, getSingleCustomer } from '../api/customerData';
 import getOrderDetails from '../api/mergedData';
 import orderdetails from '../pages/OrderDetails';
 
@@ -16,15 +16,17 @@ const domEvents = () => {
         const [, firebaseKey] = e.target.id.split('--');
 
         deleteSingleCustomer(firebaseKey).then(() => {
-          getOrder().then(viewOrders);
+          getCustomer().then(viewOrders);
         });
       }
     }
-    // ADD ORDER
+
+    // ADD CUSTOMER ORDER
     if (e.target.id.includes('add-order-btn')) {
       createOrder();
     }
-    // EDIT ORDER
+
+    // EDIT CUSTOMER ORDER
     if (e.target.id.includes('edit-order')) {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
@@ -42,27 +44,29 @@ const domEvents = () => {
         console.error('Firebase key not found.');
       }
     }
+
+    // ORDER DETAILS
     if (e.target.id.includes('orderdetails')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getOrderDetails(firebaseKey).then(orderdetails);
     }
-    // // DELETE ITEM
-    // if (e.target.id.includes('delete-item')) {
-    //   // eslint-disable-next-line no-alert
-    //   if (window.confirm('Want to delete?')) {
-    //     console.warn('CLICKED DELETE ITEM', e.target.id);
-    //   }
-    // }
-    // // ADD ITEM
-    // if (e.target.id.includes('add-item-btn')) {
-    //   console.warn();
-    // }
-    // // EDIT ITEM
-    // if (e.target.id.includes('edit-item-btn')) {
-    //   // const [, firebaseKey] = e.target.id.split('--');
-    // }
   });
+  // // DELETE ITEM
+  // if (e.target.id.includes('delete-item')) {
+  //   // eslint-disable-next-line no-alert
+  //   if (window.confirm('Want to delete?')) {
+  //     console.warn('CLICKED DELETE ITEM', e.target.id);
+  //   }
+  // }
+  // // ADD ITEM
+  // if (e.target.id.includes('add-item-btn')) {
+  //   console.warn();
+  // }
+  // // EDIT ITEM
+  // if (e.target.id.includes('edit-item-btn')) {
+  //   // const [, firebaseKey] = e.target.id.split('--');
+  // }
 };
 
 export default domEvents;
