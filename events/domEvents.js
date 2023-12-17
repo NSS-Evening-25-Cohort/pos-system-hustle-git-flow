@@ -4,11 +4,12 @@ import {
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
 import { deleteSingleCustomer, getCustomer, getSingleCustomer } from '../api/customerData';
-import getOrderDetails from '../api/mergedData';
 import orderDetails from '../pages/orderDetails';
 import {
   createItems, getItems, getSingleItems, deleteSingleItems
 } from '../api/itemsData';
+import { getOrderDetails } from '../api/mergedData';
+import revenuePage from '../pages/revenuePage';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -76,6 +77,10 @@ const domEvents = () => {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
       getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));
+    }
+    // REVENUE PAGE {
+    if (e.target.id.includes('viewRevenuesBtn')) {
+      revenuePage();
     }
   });
 };

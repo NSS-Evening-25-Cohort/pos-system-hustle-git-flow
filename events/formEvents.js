@@ -1,65 +1,74 @@
-import { createCustomer, getCustomer, updateCustomer } from '../api/customerData';
+import { createOrder, getOrder, updateOrder } from '../api/orderData';
 import viewOrders from '../pages/viewOrder';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
-    // SUBMIT CUSTOMER ORDER
+    // SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
         order: document.querySelector('#order').value,
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: true,
+        orderStatus: document.querySelector('#orderStatus').checked,
       };
-      createCustomer(payload).then(({ name }) => {
+      createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateCustomer(patchPayload).then(() => {
-          getCustomer().then(viewOrders);
+        updateOrder(patchPayload).then(() => {
+          getOrder().then(viewOrders);
         });
       });
     }
 
-    // EDIT CUSTOMER ORDER
-    if (e.target.id.includes('update-order')) {
+    // EDIT ORDER
+    if (e.target.id.includes('edit-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         order: document.querySelector('#order').value,
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: true,
+        orderStatus: document.querySelector('#orderStatus').checked,
         firebaseKey,
       };
-      updateCustomer(payload).then(() => {
-        getCustomer().then(viewOrders);
+      updateOrder(payload).then(() => {
+        getOrder().then(viewOrders);
       });
     }
-
-    // // SUBMIT ITEM
-    // if (e.target.id.includes('submit-item')) {
-    //   const payload = {
-    //     itemName: document.querySelector('#itemName').value,
-    //     itemPrice: document.querySelector('#itemPrice').value,
-    //     // Order: document.querySelector('#Order').value
-    //   };
-    //   payload();
-    // }
-
-    // // EDIT IITEM
-    // if (e.target.id.includes('edit-item')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const payload = {
-    //     itemName: document.querySelector('#itemName').value,
-    //     itemPrice: document.querySelector('#itemPrice').value,
-    //     // Order: document.querySelector('#Order').value,
-    //     firebaseKey,
-    //   };
-    //   payload();
-    // }
+    if (e.target.includes('closeOrder')) {
+      const [, firebaseKey] = e.target.split('--');
+      const payload = {
+        orderTotal: document.querySelector('#orderTotal').value,
+        firebaseKey,
+      };
+      console.warn(payload);
+      // Add logic to close the order using the payload
+      // ...
+    }
   });
 };
 
+// // SUBMIT ITEM
+// if (e.target.id.includes('submit-item')) {
+//   const payload = {
+//     itemName: document.querySelector('#itemName').value,
+//     itemPrice: document.querySelector('#itemPrice').value,
+//     // Order: document.querySelector('#Order').value
+//   };
+//   payload();
+// }
+
+// // EDIT IITEM
+// if (e.target.id.includes('edit-item')) {
+//   const [, firebaseKey] = e.target.id.split('--');
+//   const payload = {
+//     itemName: document.querySelector('#itemName').value,
+//     itemPrice: document.querySelector('#itemPrice').value,
+//     // Order: document.querySelector('#Order').value,
+//     firebaseKey,
+//   };
+//   payload();
+// }
 export default formEvents;
