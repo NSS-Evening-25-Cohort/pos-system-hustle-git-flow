@@ -16,9 +16,11 @@ const formEvents = () => {
       createCustomer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateCustomer(patchPayload).then(() => {
-          getCustomer().then(viewOrders);
-        });
+        updateCustomer(patchPayload).then(() => getCustomer())
+          .then(viewOrders)
+          .catch((error) => {
+            console.error('Error:', error);
+          });
       });
     }
 
@@ -38,27 +40,27 @@ const formEvents = () => {
       });
     }
 
-    // // SUBMIT ITEM
-    // if (e.target.id.includes('submit-item')) {
-    //   const payload = {
-    //     itemName: document.querySelector('#itemName').value,
-    //     itemPrice: document.querySelector('#itemPrice').value,
-    //     // Order: document.querySelector('#Order').value
-    //   };
-    //   payload();
-    // }
+    // SUBMIT ITEM
+    if (e.target.id.includes('submit-item')) {
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+        // Order: document.querySelector('#Order').value
+      };
+      payload();
+    }
 
-    // // EDIT IITEM
-    // if (e.target.id.includes('edit-item')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const payload = {
-    //     itemName: document.querySelector('#itemName').value,
-    //     itemPrice: document.querySelector('#itemPrice').value,
-    //     // Order: document.querySelector('#Order').value,
-    //     firebaseKey,
-    //   };
-    //   payload();
-    // }
+    // EDIT IITEM
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+        // Order: document.querySelector('#Order').value,
+        firebaseKey,
+      };
+      payload();
+    }
   });
 };
 

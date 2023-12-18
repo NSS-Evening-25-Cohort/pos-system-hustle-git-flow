@@ -5,10 +5,10 @@ import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
 import { deleteSingleCustomer, getCustomer, getSingleCustomer } from '../api/customerData';
 import getOrderDetails from '../api/mergedData';
-import orderDetails from '../pages/orderDetails';
 import {
   createItems, getItems, getSingleItems, deleteSingleItems
 } from '../api/itemsData';
+import orderDetails from '../pages/orderDetails';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -49,7 +49,7 @@ const domEvents = () => {
     }
 
     // ORDER DETAILS
-    if (e.target.id.includes('orderDetails')) {
+    if (e.target.id.includes('order-details')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getOrderDetails(firebaseKey).then(orderDetails);
