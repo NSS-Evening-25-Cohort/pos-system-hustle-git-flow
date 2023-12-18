@@ -61,20 +61,17 @@ const updateOrder = (payload) => new Promise((resolve, reject) => {
 });
 
 // TODO: GET SINGLE Order
-const getSingleOrder = async (orderId) => {
-  try {
-    // Replace this with your actual data retrieval method
-    const response = await fetch(`/api/orders/${orderId}`);
-    const orderObject = await response.json();
-    // Check for successful response and valid data
-    if (!response.ok || !orderObject) {
-      throw new Error(`Error fetching order details for ID: ${orderId}`);
-    }
-    return orderObject;
-  } catch (error) {
-    return Promise.reject(error);
-  }
-};
+const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/order/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
 export {
   deleteSingleOrder,
