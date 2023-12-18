@@ -1,4 +1,4 @@
-import { getSingleCustomer } from './customerData';
+import { getCustomerOrders, getSingleCustomer } from './customerData';
 import { getSingleOrder } from './orderData';
 
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
@@ -11,13 +11,19 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
-// TODO: GET ORDER DETAILS
+// TODO: GET ORDER TOTALS
 
-// const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
-//   getSingleCustomer(firebaseKey).then((customerObject) => {
-//     getSingleOrder(customerObject.order_id)
-//       .then((orderObject) => resolve({ ...customerObject, orderObject }));
-//   }).catch(reject);
-// });
+const getOrderTotals = (firebaseKey) => new Promise((resolve, reject) => {
+  getCustomerOrders(firebaseKey).then((customerOrders) => {
+    const itemPromises = customerOrders.map((order) => getSingleOrder(order.firebaseKey));
 
-export default getOrderDetails;
+    Promise.all(itemPromises)
+      .then((items) => {
+        const total = items.reduce((accumulator, currentItem) => accumulator + currentItem.amount, 0);
+        resolve(total);
+      })
+      .catch(reject);
+  }).catch(reject);
+});
+
+export { getOrderDetails, getOrderTotals };
