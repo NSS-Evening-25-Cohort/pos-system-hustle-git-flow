@@ -1,12 +1,14 @@
 import renderToDOM from '../utils/renderToDOM';
 import clearDom from '../utils/clearDom';
 
-const orderDetails = (array) => {
+const orderDetails = (obj) => {
   clearDom();
   let domString = `<div><h1>TOTAL:</h1></div>
   <div class="mt-5 d-flex flex-wrap">`;
   let domStringCard = '';
-  array.customerObject.forEach((item) => {
+  console.warn(obj);
+  console.warn(obj.orderObject);
+  obj.orderObject.forEach((item) => {
     domStringCard += `<div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${item.order}</h5>
