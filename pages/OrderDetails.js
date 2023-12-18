@@ -4,7 +4,12 @@ import clearDom from '../utils/clearDom';
 const orderDetails = (obj) => {
   clearDom();
   let domString = `<div><h1>TOTAL:</h1></div>
-  <div class="mt-5 d-flex flex-wrap">`;
+  <div class="mt-5 d-flex flex-wrap">
+  <hr>
+  <button type="button" id="add-item-btn" class="btn btn-success">Add Item</button>
+  <button type="button" id="paymentPage-btn" class="btn btn-primary">Go to Payment</button>
+  </div>`;
+
   let domStringCard = '';
   console.warn(obj);
   console.warn(obj.orderObject);
