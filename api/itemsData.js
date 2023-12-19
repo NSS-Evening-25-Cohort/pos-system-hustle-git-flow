@@ -3,8 +3,8 @@ import client from '../utils/client';
 const endpoint = client.databaseURL;
 
 // TODO: GET Items
-const getItems = (cid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/items.json?orderBy=cid&equalTo=${cid}`, {
+const getItems = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -81,11 +81,31 @@ const getSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+// eslint-disable-next-line
+const getSingleCustomerItem = (order_id) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line
+  fetch(`${endpoint}/items.json?orderBy="order_id"&equalTo="${order_id}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
 
 export {
   createItems,
   getSingleItems,
-  getItems,
+  getSingleCustomerItem,
   deleteSingleItems,
-  updateItems
+  updateItems,
+  getItems
 };

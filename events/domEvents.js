@@ -10,7 +10,7 @@ import {
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
-import closeOrderForm from '../pages/closeOrder';
+import closeOrderForm from '../pages/CloseOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -51,7 +51,6 @@ const domEvents = () => {
     }
 
     // ORDER DETAILS
-    if (e.target.id.includes('order-details')) {
     if (e.target.id.includes('orderdetails')) {
       const [, firebaseKey] = e.target.id.split('--');
 

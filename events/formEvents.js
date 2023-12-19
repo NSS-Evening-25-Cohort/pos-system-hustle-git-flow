@@ -1,5 +1,7 @@
 import viewOrders from '../pages/viewOrder';
 import { createCustomer, getCustomer, updateCustomer } from '../api/customerData';
+import { createItems, getItems, updateItems } from '../api/itemsData';
+import orderDetails from '../pages/OrderDetails';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
@@ -47,29 +49,37 @@ const formEvents = () => {
       // Add logic to close the order using the payload
       // ...
     }
+
+    // SUBMIT ITEM
+    if (e.target.id.includes('submit-item')) {
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+        // Order: document.querySelector('#Order').value
+      };
+      createItems(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateItems(patchPayload).then(() => {
+          getItems().then(orderDetails);
+        });
+      });
+    }
+
+    // EDIT IITEM
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+        // Order: document.querySelector('#Order').value
+        firebaseKey
+      };
+      updateItems(payload).then(() => {
+        getItems().then(orderDetails);
+      });
+    }
   });
 };
-
-// // SUBMIT ITEM
-// if (e.target.id.includes('submit-item')) {
-//   const payload = {
-//     itemName: document.querySelector('#itemName').value,
-//     itemPrice: document.querySelector('#itemPrice').value,
-//     // Order: document.querySelector('#Order').value
-//   };
-//   payload();
-// }
-
-// // EDIT IITEM
-// if (e.target.id.includes('edit-item')) {
-//   const [, firebaseKey] = e.target.id.split('--');
-//   const payload = {
-//     itemName: document.querySelector('#itemName').value,
-//     itemPrice: document.querySelector('#itemPrice').value,
-//     // Order: document.querySelector('#Order').value,
-//     firebaseKey,
-//   };
-//   payload();
-// }
 
 export default formEvents;
