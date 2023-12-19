@@ -1,29 +1,20 @@
 import renderToDOM from '../utils/renderToDOM';
 import clearDom from '../utils/clearDom';
 
-const orderDetails = (obj) => {
+const orderDetails = (object) => {
   clearDom();
-  let domString = `<div><h1>TOTAL:</h1></div>
-  <div class="mt-5 d-flex flex-wrap">
-  <hr>
-  <button type="button" id="add-item-btn" class="btn btn-success">Add Item</button>
-  <button type="button" id="paymentPage-btn" class="btn btn-primary">Go to Payment</button>
-  </div>`;
 
-  let domStringCard = '';
-  console.warn(obj);
-  console.warn(obj.orderObject);
-  obj.orderObject.forEach((item) => {
-    domStringCard += `<div class="card" style="width: 18rem;">
+  // Check if object and orderObject are defined
+
+  const domString = `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">${item.order}</h5>
-      <h5 class="card-title">$${item.orderTotal}</h5>
-      <a href="#" id="edit-item--${item.firebaseKey}" class="card-link">EDIT</a>
-      <a href="#" id="delete-item--${item.firebaseKey}" class="card-link">DELETE</a>
-    </div>
-  </div>`;
-  });
-  domString += domStringCard;
+      <h5 class="card-title">Order: ${object.order}</h5>
+      <h5 class="card-title">Order Total: asd</h5>
+      <a href="#" id="edit-order-${object.firebaseKey}" class="card-link">Edit</a>
+      <a href="#" id="deleteorder-${object.firebaseKey}" class="card-link">Delete</a>
+    </div>`;
+
+  // domString += domStringCard;
   renderToDOM('#view', domString);
 };
 

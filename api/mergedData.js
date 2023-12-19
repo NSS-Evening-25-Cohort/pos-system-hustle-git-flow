@@ -1,7 +1,6 @@
 import { getCustomerOrders, getSingleCustomer } from './customerData';
 import { getSingleOrder } from './orderData';
 
-// TODO: GET ORDER DETAILS
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleCustomer(firebaseKey).then((customerObject) => {
     getCustomerOrders().then((orderObject) => resolve({ ...customerObject, orderObject }));

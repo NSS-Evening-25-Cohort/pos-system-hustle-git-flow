@@ -51,7 +51,7 @@ const domEvents = () => {
     }
 
     // ORDER DETAILS
-    if (e.target.id.includes('orderDetails')) {
+    if (e.target.id.includes('orderdetails')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getOrderDetails(firebaseKey).then(orderDetails);

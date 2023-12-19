@@ -37,17 +37,16 @@ const formEvents = () => {
         getCustomer().then(viewOrders);
       });
     }
-
-    // if (e.target.includes('closeOrder')) {
-    //   const [, firebaseKey] = e.target.split('--');
-    //   const payload = {
-    //     orderTotal: document.querySelector('#orderTotal').value,
-    //     firebaseKey,
-    //   };
-    //   console.warn(payload);
-    //   // Add logic to close the order using the payload
-    //   // ...
-    // }
+    if (e.target.includes('closeOrder')) {
+      const [, firebaseKey] = e.target.split('--');
+      const payload = {
+        orderTotal: document.querySelector('#orderTotal').value,
+        firebaseKey,
+      };
+      console.warn(payload);
+      // Add logic to close the order using the payload
+      // ...
+    }
   });
 };
 
