@@ -10,9 +10,20 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
 
 // DELETE RELATIONSHIP
 const getItemDetails = (firebaseKey) => new Promise((resolve, reject) => {
-  getSingleOrder(firebaseKey).then((orderObject) => {
-    getItems().then((itemObject) => resolve({ ...itemObject, orderObject }));
-  }).catch(reject);
+  getSingleOrder(firebaseKey)
+    .then((orderObject) => {
+      getItems(orderObject.firebaseKey)
+        .then((itemObjects) => {
+          const items = itemObjects.map((item) => ({
+            itemName: item.itemName,
+            itemPrice: item.itemPrice,
+          }));
+
+          resolve({ ...orderObject, items });
+        })
+        .catch(reject);
+    })
+    .catch(reject);
 });
 
 // TODO: GET ORDER TOTALS
