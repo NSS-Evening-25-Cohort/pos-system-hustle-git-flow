@@ -4,7 +4,7 @@ import {
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
 import { deleteSingleCustomer, getCustomer, getSingleCustomer } from '../api/customerData';
-import orderDetails from '../pages/orderDetails';
+import orderDetails from '../pages/OrderDetails';
 import {
   createItems, getItems, getSingleItems, deleteSingleItems
 } from '../api/itemsData';
