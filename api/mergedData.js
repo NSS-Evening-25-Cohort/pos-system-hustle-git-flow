@@ -1,6 +1,6 @@
 import { getCustomerOrders, getSingleCustomer } from './customerData';
 import { deleteSingleItems, getItems, getSingleItems } from './itemsData';
-import { deleteSingleOrder } from './orderData';
+import { deleteSingleOrder, getOrder } from './orderData';
 
 // TODO: GET ORDER DETAILS
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
 // TODO: GET ITEMS IN THE ORDER
 const getOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleItems(firebaseKey).then((itemObject) => {
-    getCustomerOrders().then((orderObject) => resolve({ ...itemObject, orderObject }));
+    getOrder().then((orderObject) => resolve({ ...itemObject, orderObject }));
   }).catch(reject);
 });
 
