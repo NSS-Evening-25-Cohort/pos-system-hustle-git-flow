@@ -1,6 +1,8 @@
 import { getCustomerOrders, getSingleCustomer } from './customerData';
-import { getItems } from './itemsData';
-import { getSingleOrder } from './orderData';
+
+import { deleteSingleItems, getItems, getSingleItems } from './itemsData';
+import { deleteSingleOrder, getOrder } from './orderData';
+
 
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleCustomer(firebaseKey).then((customerObject) => {
@@ -8,37 +10,22 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
-// DELETE RELATIONSHIP
-const getItemDetails = (firebaseKey) => new Promise((resolve, reject) => {
-  getSingleOrder(firebaseKey)
-    .then((orderObject) => {
-      getItems(orderObject.firebaseKey)
-        .then((itemObjects) => {
-          const items = itemObjects.map((item) => ({
-            itemName: item.itemName,
-            itemPrice: item.itemPrice,
-          }));
 
-          resolve({ ...orderObject, items });
-        })
-        .catch(reject);
-    })
-    .catch(reject);
-});
-
-// TODO: GET ORDER TOTALS
-
-const getOrderTotals = (firebaseKey) => new Promise((resolve, reject) => {
-  getCustomerOrders(firebaseKey).then((customerOrders) => {
-    const itemPromises = customerOrders.map((order) => getSingleOrder(order.firebaseKey));
-
-    Promise.all(itemPromises)
-      .then((items) => {
-        const total = items.reduce((accumulator, currentItem) => accumulator + currentItem.amount, 0);
-        resolve(total);
-      })
-      .catch(reject);
+const getOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
+  getSingleItems(firebaseKey).then((itemObject) => {
+    getOrder().then((orderObject) => resolve({ ...itemObject, orderObject }));
   }).catch(reject);
 });
 
-export { getOrderDetails, getOrderTotals, getItemDetails };
+// TODO: DELETE THE ITEM RELATIONSHIP TO ORDER RELATIONSHIP
+const deleteOrderRelationship = (firebaseKey) => new Promise((resolve, reject) => {
+  getItems(firebaseKey).then((itemsArray) => {
+    const deleteItemPromises = itemsArray.map((item) => deleteSingleItems(item.firebaseKey));
+
+    Promise.all(deleteItemPromises).then(() => {
+      deleteSingleOrder(firebaseKey).then(resolve);
+    });
+  }).catch(reject);
+});
+
+export { getOrderDetails, getOrderItems, deleteOrderRelationship };
