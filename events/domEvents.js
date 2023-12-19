@@ -10,6 +10,7 @@ import {
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
+import closeOrderForm from '../pages/closeOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -51,6 +52,7 @@ const domEvents = () => {
 
     // ORDER DETAILS
     if (e.target.id.includes('order-details')) {
+    if (e.target.id.includes('orderdetails')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getOrderDetails(firebaseKey).then(orderDetails);
@@ -73,11 +75,17 @@ const domEvents = () => {
       createItems();
     }
     // EDIT ITEM
-    if (e.target.id.includes('edit-item')) {
+    if (e.target.id.includes('update-item')) {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
       getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));
     }
+
+    // CLOSE ORDER FORM
+    if (e.target.id.includes('paymentPage-btn')) {
+      closeOrderForm();
+    }
+
     // REVENUE PAGE {
     if (e.target.id.includes('viewRevenuesBtn')) {
       revenuePage();

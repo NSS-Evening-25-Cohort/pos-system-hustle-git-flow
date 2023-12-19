@@ -84,17 +84,36 @@ const getCustomerOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const revenue = Object.values(data).filter((item) => item.orderTotal === 'true');
+
+      const revenue = Object.values(data).filter((item) => item.orderStatus === 'false');
+
       resolve(revenue);
     })
     .catch(reject);
 });
 
+const getClosedOrders = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/customer.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+
+      const revenue = Object.values(data).filter((item) => item.orderStatus === 'true');
+
+      resolve(revenue);
+    })
+    .catch(reject);
+});
 export {
   getCustomer,
   getSingleCustomer,
   deleteSingleCustomer,
   updateCustomer,
   createCustomer,
-  getCustomerOrders
+  getCustomerOrders,
+  getClosedOrders
 };
