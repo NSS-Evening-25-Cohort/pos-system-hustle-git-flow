@@ -4,7 +4,7 @@ const endpoint = client.databaseURL;
 
 // TODO: GET Items
 const getItems = (cid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/items.json?orderBy"cid"&equalTo="${cid}"`, {
+  fetch(`${endpoint}/items.json?orderBy=cid&equalTo=${cid}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -43,9 +43,17 @@ const createItems = (payload) => new Promise((resolve, reject) => {
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => resolve(data))
-    .catch(reject);
+    .catch((error) => {
+      console.error('Error creating item:', error);
+      reject(error);
+    });
 });
 
 // TODO: UPDATE Items

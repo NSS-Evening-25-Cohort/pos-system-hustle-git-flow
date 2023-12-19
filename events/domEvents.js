@@ -74,7 +74,7 @@ const domEvents = () => {
       createItems();
     }
     // EDIT ITEM
-    if (e.target.id.includes('edit-item')) {
+    if (e.target.id.includes('update-item')) {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
       getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));
