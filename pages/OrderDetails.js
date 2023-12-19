@@ -3,7 +3,18 @@ import clearDom from '../utils/clearDom';
 
 const orderDetails = (obj) => {
   clearDom();
-  let domString = `<div><h1>TOTAL:</h1></div>
+  let total = '';
+
+  if (obj && obj.orderObject && Array.isArray(obj.orderObject)) {
+    obj.orderObject.forEach((item) => {
+      total += (item.itemPrice);
+    });
+  } else {
+    console.error('Invalid input: obj must be an object with an orderObject array.');
+    return;
+  }
+
+  let domString = `<div><h1>TOTAL:${total}</h1></div>
   <div class="mt-5 d-flex flex-wrap">
   <hr>
   <button type="button" id="add-item-btn" class="btn btn-success">Add Item</button>
