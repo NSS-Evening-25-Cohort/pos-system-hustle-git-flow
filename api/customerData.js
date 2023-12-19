@@ -84,7 +84,6 @@ const getCustomerOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-
       const revenue = Object.values(data).filter((item) => item.orderStatus === 'false');
 
       resolve(revenue);
@@ -101,7 +100,6 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-
       const revenue = Object.values(data).filter((item) => item.orderStatus === 'true');
 
       resolve(revenue);

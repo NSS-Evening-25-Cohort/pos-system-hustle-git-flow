@@ -1,5 +1,8 @@
-const initialValue = 0;
-const revenueObj = [];
-const revenueSum = revenueObj.reduce((accumulator, curValue) => accumulator + curValue, initialValue);
+// import { getClosedOrders } from '../api/customerData';
 
-export default revenueSum;
+// initialValue = 0;
+
+// const revenueObj = [];
+// const revenueSum = revenueObj.reduce((accumulator, curValue) => accumulator + curValue, initialValue);
+
+// export default revenueSum;
