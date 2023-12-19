@@ -1,7 +1,7 @@
 import { getOrderTotal } from '../api/orderData';
 import revenueSum from '../utils/calculator';
 import clearDom from '../utils/clearDom';
-import renderToDOM from '../utils/renderToDom';
+import renderToDOM from '../utils/renderToDOM';
 
 const revenuePage = () => {
   getOrderTotal().then((rev) => revenueSum(rev));
