@@ -76,7 +76,7 @@ const getSingleCustomer = (firebaseKey) => new Promise((resolve, reject) => {
 });
 // Filter orders by BOOLEAN
 const getCustomerOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/customer.json`, {
+  fetch(`${endpoint}/order.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const getCustomerOrders = () => new Promise((resolve, reject) => {
 });
 
 const getClosedOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/customer.json`, {
+  fetch(`${endpoint}/order.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
