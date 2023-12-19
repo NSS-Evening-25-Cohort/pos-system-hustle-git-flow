@@ -10,6 +10,7 @@ import {
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
+import closeOrderForm from '../pages/closeOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -78,6 +79,12 @@ const domEvents = () => {
 
       getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));
     }
+
+    // CLOSE ORDER FORM
+    if (e.target.id.includes('paymentPage-btn')) {
+      closeOrderForm();
+    }
+
     // REVENUE PAGE {
     if (e.target.id.includes('viewRevenuesBtn')) {
       revenuePage();
