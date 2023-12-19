@@ -3,6 +3,17 @@ import renderToDOM from '../utils/renderToDOM';
 
 const viewOrders = (array) => {
   clearDom();
+
+  const viewOrdersButton = () => {
+    const domStringB = `<div class="open-closed-buttons">
+    <a href="#" id="open-button" class="btn btn-success">OPEN</a>
+    <a href="#" id="closed-button" class="btn btn-success">CLOSED</a>
+    </div>`;
+
+    renderToDOM('#store', domStringB);
+  };
+  viewOrdersButton();
+
   let domString = '';
   array.forEach((item) => {
     domString += `<div class="card" style="width: 18rem;">
@@ -17,7 +28,7 @@ const viewOrders = (array) => {
     </div>
   </div>`;
   });
-  renderToDOM('#store', domString);
+  renderToDOM('#view', domString);
 };
 
 export default viewOrders;

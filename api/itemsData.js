@@ -22,7 +22,7 @@ const getItems = () => new Promise((resolve, reject) => {
 });
 
 // TODO: DELETE Items
-const deleteSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
@@ -70,7 +70,7 @@ const updateItems = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // TODO: GET SINGLE Items
-const getSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -122,13 +122,10 @@ const getOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   createItems,
-  getSingleItems,
+  getSingleItem,
   getSingleCustomerItem,
-  deleteSingleItems,
+  deleteSingleItem,
   updateItems,
-<<<<<<< HEAD
-  getItems
-=======
+  getItems,
   getOrderItems
->>>>>>> 8348d8f0ddbd62f778c3a2615bac4ce1d7937dc1
 };
