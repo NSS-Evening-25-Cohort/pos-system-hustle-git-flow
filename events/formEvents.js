@@ -1,5 +1,5 @@
-import { createOrder, getOrder, updateOrder } from '../api/orderData';
 import viewOrders from '../pages/viewOrder';
+import { createCustomer, getCustomer, updateCustomer } from '../api/customerData';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
@@ -11,33 +11,33 @@ const formEvents = () => {
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: document.querySelector('#orderStatus').checked,
+        orderStatus: false,
       };
-      createOrder(payload).then(({ name }) => {
+      createCustomer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateOrder(patchPayload).then(() => {
-          getOrder().then(viewOrders);
+        updateCustomer(patchPayload).then(() => {
+          getCustomer().then(viewOrders);
         });
       });
     }
 
     // EDIT ORDER
-    if (e.target.id.includes('edit-order')) {
+    if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         order: document.querySelector('#order').value,
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: document.querySelector('#orderStatus').checked,
+        orderStatus: true,
         firebaseKey,
       };
-      updateOrder(payload).then(() => {
-        getOrder().then(viewOrders);
+      updateCustomer(payload).then(() => {
+        getCustomer().then(viewOrders);
       });
     }
-    if (e.target.id.includes('closeOrder')) {
+    if (e.target.includes('closeOrder')) {
       const [, firebaseKey] = e.target.split('--');
       const payload = {
         orderTotal: document.querySelector('#orderTotal').value,
@@ -71,4 +71,5 @@ const formEvents = () => {
 //   };
 //   payload();
 // }
+
 export default formEvents;

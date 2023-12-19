@@ -3,13 +3,11 @@ import { getSingleOrder } from './orderData';
 
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleCustomer(firebaseKey).then((customerObject) => {
-    if (customerObject) {
-      getSingleOrder(customerObject.firebaseKey)
-        .then((orderObject) => resolve({ ...customerObject, orderObject }))
-        .catch(reject);
-    }
+    getCustomerOrders().then((orderObject) => resolve({ ...customerObject, orderObject }));
   }).catch(reject);
 });
+
+// DELETE RELATIONSHIP
 
 // TODO: GET ORDER TOTALS
 

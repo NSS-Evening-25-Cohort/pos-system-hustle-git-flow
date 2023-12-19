@@ -73,10 +73,24 @@ const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET CUSTOMER ORDERS
+const customerOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/order.json?orderBy="order_id"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   deleteSingleOrder,
   createOrder,
   updateOrder,
   getSingleOrder,
-  getOrder
+  getOrder,
+  customerOrder
 };

@@ -12,9 +12,9 @@ const orderDetails = (object) => {
       <h5 class="card-title">Order Total: asd</h5>
       <a href="#" id="edit-order-${object.firebaseKey}" class="card-link">Edit</a>
       <a href="#" id="deleteorder-${object.firebaseKey}" class="card-link">Delete</a>
-    </div>
-  </div>`;
+    </div>`;
 
+  // domString += domStringCard;
   renderToDOM('#view', domString);
 };
 
