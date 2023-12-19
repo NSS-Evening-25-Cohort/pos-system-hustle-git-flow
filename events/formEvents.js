@@ -1,4 +1,7 @@
-import { createItems, getItems, updateItems } from '../api/itemsData';
+import { getClosedOrders, updateCustomer } from '../api/customerData';
+import {
+  createItems, getItems, getOrderItems, updateItems,
+} from '../api/itemsData';
 import { createOrder, getOrder, updateOrder } from '../api/orderData';
 import orderDetails from '../pages/OrderDetails';
 import viewOrders from '../pages/viewOrder';
@@ -65,18 +68,53 @@ const formEvents = () => {
         getItems().then(orderDetails);
       });
     }
+
+    // SUBMIT ITEM
+    if (e.target.id.includes('submit-item')) {
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+      };
+      createItems(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateItems(patchPayload).then(() => {
+          getOrderItems().then(orderDetails);
+        });
+      });
+    }
+
+    // EDIT IITEM
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        itemName: document.querySelector('#itemName').value,
+        itemPrice: document.querySelector('#itemPrice').value,
+        // Order: document.querySelector('#Order').value
+        firebaseKey
+      };
+      updateItems(payload).then(() => {
+        getItems().then(orderDetails);
+      });
+    }
+
+    // CLOSE ORDER
+    if (e.target.id.includes('submit-closed-order')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        orderTotal: document.querySelector('#orderTotal').value,
+        tipAmount: document.querySelector('#tipAmount').value,
+        firebaseKey,
+      };
+      const patchPayload = {
+        orderStatus: document.getElementById('#orderStatus').checked === true,
+        firebaseKey,
+      };
+
+      updateCustomer(patchPayload).then(updateOrder(payload));
+      getClosedOrders().then(viewOrders);
+    }
   });
 };
-// close Order
-//     if (e.target.id.includes('closeOrder')) {
-//       const [, firebaseKey] = e.target.id.split('--');
-//       const payload = {
-//         orderTotal: document.querySelector('#orderTotal').value,
-//         orderStatus: document.getElementById('#orderStatus').checked,
-//         tipAmount: document.querySelector('#tipAmount').value,
-//         firebaseKey,
-//       };
-//       getClosedOrders(payload).then(viewOrders);
-//     }
 
 export default formEvents;

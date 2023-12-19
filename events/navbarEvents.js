@@ -14,10 +14,6 @@ const navbarEvents = () => {
     createEditOrder();
   });
 
-  document.querySelector('#createOrderBtn').addEventListener('click', () => {
-    createEditOrder();
-  });
-
   document.querySelector('#viewOrdersBtn').addEventListener('click', () => {
     getCustomer().then(viewOrders);
   });

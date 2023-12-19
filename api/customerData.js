@@ -100,12 +100,29 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const revenue = Object.values(data).filter((item) => item.orderStatus === 'true');
+      const closed = Object.values(data).filter((item) => item.orderStatus === true);
 
-      resolve(revenue);
+      resolve(closed);
     })
     .catch(reject);
 });
+
+const getOpenOrders = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/customer.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const open = Object.values(data).filter((item) => item.orderStatus === false);
+
+      resolve(open);
+    })
+    .catch(reject);
+});
+
 export {
   getCustomer,
   getSingleCustomer,
@@ -113,5 +130,6 @@ export {
   updateCustomer,
   createCustomer,
   getCustomerOrders,
-  getClosedOrders
+  getClosedOrders,
+  getOpenOrders
 };
