@@ -5,7 +5,7 @@ import selectOrderType from '../shared/selectOrderType';
 const createEditOrder = (obj = {}) => {
   clearDom();
   const domString = `
-  <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
+  <form id="${obj.firebaseKey ? `edit-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   <div class="form-container" >
     <div class="mb-3">
       <label for="order" class="form-label">Order Name</label>

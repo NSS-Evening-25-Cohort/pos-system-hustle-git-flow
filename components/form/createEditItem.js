@@ -3,18 +3,18 @@ import renderToDOM from '../../utils/renderToDOM';
 
 const createEditItem = (obj = {}) => {
   clearDom();
-  const domString = `<form id="createEditItem">
+  const domString = `<form id="${obj.firebaseKey ? `edit-item--${obj.firebaseKey}` : 'submit-item'}">
   <div class="form-container" >
     <div class="mb-3">
       <label for="itemName" class="form-label">Item Name</label>
       <input type="text" class="form-control" id="itemName" value="${obj.itemName || ''}" placeholder="Enter Item Name Here" required>
     </div>
     <div class="mb-3">
-      <label for="itemType" class="form-label">Item Type</label>
-      <input type="text" class="form-control" id="itemType" value="${obj.itemType || ''}" placeholder="Enter Item Type Here" required>
+      <label for="itemPrice" class="form-label">Item Price</label>
+      <input type="text" class="form-control" id="itemPrice" value="${obj.itemPrice || ''}" placeholder="Enter Item Price Here" required>
     </div>
   </div>
-  <button type="submit" id="submit-order" class="btn btn-success mt-3">ADD/EDIT ITEM</button>
+  <button type="submit" class="btn btn-success mt-3">ADD/EDIT ITEM</button>
   </form>`;
 
   renderToDOM('#form-container', domString);

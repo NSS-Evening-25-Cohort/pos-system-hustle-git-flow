@@ -1,6 +1,6 @@
 import { getSingleCustomer } from './customerData';
-import { deleteSingleItems, getItems, getOrderItems } from './itemsData';
-import { deleteSingleOrder } from './orderData';
+import { deleteSingleItem, getItems, getOrderItems } from './itemsData';
+import { deleteSingleOrder, getSingleOrder } from './orderData';
 
 const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleCustomer(firebaseKey).then((customerObject) => {
@@ -8,16 +8,16 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
-// const getOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
-//   getSingleOrder(firebaseKey).then((orderObject) => {
-//     getItems().then((itemObject) => resolve({ ...itemObject, orderObject }));
-//   }).catch(reject);
-// });
+const getMergedOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
+  getSingleOrder(firebaseKey).then((orderObject) => {
+    getItems(firebaseKey).then((itemObject) => resolve({ ...itemObject, orderObject }));
+  }).catch(reject);
+});
 
 // TODO: DELETE THE ITEM RELATIONSHIP TO ORDER RELATIONSHIP
 const deleteOrderRelationship = (firebaseKey) => new Promise((resolve, reject) => {
   getItems(firebaseKey).then((itemsArray) => {
-    const deleteItemPromises = itemsArray.map((item) => deleteSingleItems(item.firebaseKey));
+    const deleteItemPromises = itemsArray.map((item) => deleteSingleItem(item.firebaseKey));
 
     Promise.all(deleteItemPromises).then(() => {
       deleteSingleOrder(firebaseKey).then(resolve);
@@ -27,6 +27,6 @@ const deleteOrderRelationship = (firebaseKey) => new Promise((resolve, reject) =
 
 export {
   getOrderDetails,
-  // getOrderItems,
+  getMergedOrderItems,
   deleteOrderRelationship
 };
