@@ -3,10 +3,12 @@ import {
 } from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
-import { deleteSingleCustomer, getCustomer, getSingleCustomer } from '../api/customerData';
+import {
+  deleteSingleCustomer, getClosedOrders, getCustomer, getOpenOrders, getSingleCustomer
+} from '../api/customerData';
 import orderDetails from '../pages/OrderDetails';
 import {
-  createItems, getItems, getSingleItems, deleteSingleItems
+  createItems, getItems, getSingleItem, deleteSingleItem
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
@@ -65,7 +67,7 @@ const domEvents = () => {
         console.warn('CLICKED DELETE ITEM', e.target.id);
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteSingleItems(firebaseKey).then(() => {
+        deleteSingleItem(firebaseKey).then(() => {
           getItems().then(orderDetails);
         });
       }
@@ -78,7 +80,7 @@ const domEvents = () => {
     if (e.target.id.includes('edit-item')) {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
-      getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));
+      getSingleItem(firebaseKey).then((itemObj) => createItems(itemObj));
     }
 
     // CLOSE ORDER FORM
@@ -89,6 +91,16 @@ const domEvents = () => {
     // REVENUE PAGE {
     if (e.target.id.includes('viewRevenuesBtn')) {
       revenuePage();
+    }
+
+    // OPEN BUTTON
+    if (e.target.id.includes('open-button')) {
+      getOpenOrders().then(viewOrders);
+    }
+
+    // CLOSE BUTTON
+    if (e.target.id.includes('closed-button')) {
+      getClosedOrders().then(viewOrders);
     }
   });
 };

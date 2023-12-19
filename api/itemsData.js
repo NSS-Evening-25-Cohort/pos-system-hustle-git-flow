@@ -22,7 +22,7 @@ const getItems = () => new Promise((resolve, reject) => {
 });
 
 // TODO: DELETE Items
-const deleteSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
@@ -70,7 +70,7 @@ const updateItems = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // TODO: GET SINGLE Items
-const getSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -79,6 +79,25 @@ const getSingleItems = (firebaseKey) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
+    .catch(reject);
+});
+// eslint-disable-next-line
+const getSingleCustomerItem = (order_id) => new Promise((resolve, reject) => {
+  // eslint-disable-next-line
+  fetch(`${endpoint}/items.json?orderBy="order_id"&equalTo="${order_id}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -103,9 +122,10 @@ const getOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   createItems,
-  getSingleItems,
-  getItems,
-  deleteSingleItems,
+  getSingleItem,
+  getSingleCustomerItem,
+  deleteSingleItem,
   updateItems,
+  getItems,
   getOrderItems
 };

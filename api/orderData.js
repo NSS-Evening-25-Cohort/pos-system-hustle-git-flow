@@ -101,6 +101,19 @@ const getOrderTotal = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const updateClosedOrder = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/order/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   deleteSingleOrder,
   createOrder,
@@ -108,5 +121,6 @@ export {
   getSingleOrder,
   getOrder,
   customerOrder,
-  getOrderTotal
+  getOrderTotal,
+  updateClosedOrder
 };
