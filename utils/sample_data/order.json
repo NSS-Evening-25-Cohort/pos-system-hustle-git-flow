@@ -1,33 +1,33 @@
 {
     "-NlF479MVsx5L3fadKAN": {
       "paymentMethod": "card",
-      "orderTotal": "$21.57",
-      "order_id": "-NlnQw-pC_2wzGuVxBhk",
-      "tipAmount": "$1.34",
+      "orderTotal": "21.57",
+      "order_id": "-NlEnOblsfzpl2wle9Ss",
+      "tipAmount": "1.34",
       "date_submitted": "1682404366000",
       "firebaseKey": "-NlF479MVsx5L3fadKAN"
     },
     "-NlF479OPttspaOr5_M1": {
       "paymentMethod": "mobile",
-      "orderTotal": "$33.88",
+      "orderTotal": "33.88",
       "order_id": "-NlEnObnkpQMhLE9O5WQ",
-      "tipAmount": "$4.45",
+      "tipAmount": "4.45",
       "date_submitted": "1678627764000",
       "firebaseKey": "-NlF479OPttspaOr5_M1"
     },
     "-NlF479PbeYWUv2nIuBw": {
       "paymentMethod": "cash",
-      "orderTotal": "$23.42",
+      "orderTotal": "23.42",
       "order_id": "-NlEnObpApBjvSel2H-W",
-      "tipAmount": "$5.54",
+      "tipAmount": "5.54",
       "date_submitted": "1691388701000",
       "firebaseKey": "-NlF479PbeYWUv2nIuBw"
     },
     "-NlF479Q27YOR8nYnn4y": {
       "paymentMethod": "mobile",
-      "orderTotal": "$25.57",
+      "orderTotal": "25.57",
       "order_id": "-NlEnObrCpvMaldXo4nu",
-      "tipAmount": "$12.44",
+      "tipAmount": "12.44",
       "date_submitted": "1699714794000",
       "firebaseKey": "-NlF479Q27YOR8nYnn4y"
     }

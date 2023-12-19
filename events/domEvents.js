@@ -10,7 +10,8 @@ import {
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
-import closeOrderForm from '../pages/CloseOrder';
+import closeOrderForm from '../pages/closeOrder';
+import createEditItem from '../components/form/createEditItem';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -71,10 +72,10 @@ const domEvents = () => {
     }
     // ADD ITEM
     if (e.target.id.includes('add-item')) {
-      createItems();
+      createEditItem();
     }
     // EDIT ITEM
-    if (e.target.id.includes('update-item')) {
+    if (e.target.id.includes('edit-item')) {
       const [, firebaseKey] = e.target.id.split('--') || [];
 
       getSingleItems(firebaseKey).then((itemObj) => createItems(itemObj));

@@ -85,6 +85,21 @@ const customerOrder = (firebaseKey) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+// TODO: orderTotal Filter
+const getOrderTotal = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/order.json?orderby="orderTotal"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const orderTotal = Object.values(data).reduce((accumulator, order) => accumulator + order.orderTotal, 0);
+      resolve(orderTotal);
+    })
+    .catch(reject);
+});
 
 export {
   deleteSingleOrder,
@@ -92,5 +107,6 @@ export {
   updateOrder,
   getSingleOrder,
   getOrder,
-  customerOrder
+  customerOrder,
+  getOrderTotal
 };
