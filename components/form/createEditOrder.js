@@ -1,5 +1,5 @@
 import clearDom from '../../utils/clearDom';
-import renderToDOM from '../../utils/renderToDom';
+import renderToDOM from '../../utils/renderToDOM';
 import selectOrderType from '../shared/selectOrderType';
 
 const createEditOrder = (obj = {}) => {
