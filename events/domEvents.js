@@ -10,7 +10,7 @@ import {
 } from '../api/itemsData';
 import { getOrderDetails } from '../api/mergedData';
 import revenuePage from '../pages/revenuePage';
-import closeOrderForm from '../pages/closeOrder';
+import closeOrderForm from '../pages/CloseOrder';
 import createEditItem from '../components/form/createEditItem';
 
 const domEvents = () => {
