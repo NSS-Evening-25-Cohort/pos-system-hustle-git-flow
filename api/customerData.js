@@ -76,7 +76,7 @@ const getSingleCustomer = (firebaseKey) => new Promise((resolve, reject) => {
 });
 // Filter orders by BOOLEAN
 const getCustomerOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/order.json`, {
+  fetch(`${endpoint}/customer.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -84,14 +84,14 @@ const getCustomerOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const revenue = Object.values(data).filter((item) => item.orderTotal === 'false');
+      const revenue = Object.values(data).filter((item) => item.orderStatus === 'false');
       resolve(revenue);
     })
     .catch(reject);
 });
 
 const getClosedOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/order.json`, {
+  fetch(`${endpoint}/customer.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const getClosedOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const revenue = Object.values(data).filter((item) => item.orderTotal === 'true');
+      const revenue = Object.values(data).filter((item) => item.orderStatus === 'true');
       resolve(revenue);
     })
     .catch(reject);
