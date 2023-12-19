@@ -1,4 +1,4 @@
-import renderToDOM from '../../utils/renderToDOM';
+import renderToDOM from '../../utils/renderToDom';
 import logo from '../../assets/logo.png';
 
 const navBar = () => {

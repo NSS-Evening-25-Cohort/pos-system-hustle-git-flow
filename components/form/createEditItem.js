@@ -1,5 +1,5 @@
 import clearDom from '../../utils/clearDom';
-import renderToDOM from '../../utils/renderToDOM';
+import renderToDOM from '../../utils/renderToDom';
 
 const createEditItem = (obj = {}) => {
   clearDom();

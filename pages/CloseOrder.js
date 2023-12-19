@@ -1,6 +1,6 @@
 import selectPayment from '../components/shared/selectPayment';
 import clearDom from '../utils/clearDom';
-import renderToDOM from '../utils/renderToDOM';
+import renderToDOM from '../utils/renderToDom';
 
 const closeOrderForm = (obj = {}) => {
   clearDom();

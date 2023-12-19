@@ -1,4 +1,4 @@
-import renderToDOM from '../utils/renderToDOM';
+import renderToDOM from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
 
 const homePage = (user) => {

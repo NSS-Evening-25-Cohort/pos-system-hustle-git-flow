@@ -1,4 +1,4 @@
-import renderToDOM from '../../utils/renderToDOM';
+import renderToDOM from '../../utils/renderToDom';
 
 const selectPayment = () => {
   const domString = `<label for="paymentType">Payment Type</label>

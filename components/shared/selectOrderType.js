@@ -1,4 +1,4 @@
-import renderToDOM from '../../utils/renderToDOM';
+import renderToDOM from '../../utils/renderToDom';
 
 const selectOrderType = () => {
   const domString = `<label for="orderType">Select Order Type</label>
