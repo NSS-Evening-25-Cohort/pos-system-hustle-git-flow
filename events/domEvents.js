@@ -1,6 +1,3 @@
-import {
-  createOrder,
-} from '../api/orderData';
 import createEditOrder from '../components/form/createEditOrder';
 import viewOrders from '../pages/viewOrder';
 import {
@@ -30,8 +27,8 @@ const domEvents = () => {
     }
 
     // ADD CUSTOMER ORDER
-    if (e.target.id.includes('add-order-btn')) {
-      createOrder();
+    if (e.target.id.includes('createOrderBtn')) {
+      createEditOrder();
     }
 
     // EDIT CUSTOMER ORDER
