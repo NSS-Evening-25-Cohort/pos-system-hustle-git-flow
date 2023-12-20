@@ -10,7 +10,7 @@ const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
 
 const getMergedOrderItems = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleOrder(firebaseKey).then((orderObject) => {
-    getItems(firebaseKey).then((itemObject) => resolve({ ...itemObject, orderObject }));
+    getItems(firebaseKey).then((itemObject) => resolve({ ...orderObject, itemObject }));
   }).catch(reject);
 });
 

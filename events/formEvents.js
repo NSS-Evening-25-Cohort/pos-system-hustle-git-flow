@@ -1,8 +1,8 @@
-import { getClosedOrders, updateCustomer } from '../api/customerData';
+import { createCustomer, getClosedOrders, updateCustomer } from '../api/customerData';
 import {
-  createItems, getItems, getOrderItems, updateItems,
+  createItems, getItems, updateItems,
 } from '../api/itemsData';
-import { createOrder, getOrder, updateOrder } from '../api/orderData';
+import { getOrder, updateOrder } from '../api/orderData';
 import orderDetails from '../pages/OrderDetails';
 import viewOrders from '../pages/viewOrder';
 
@@ -16,12 +16,12 @@ const formEvents = () => {
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: document.querySelector('#orderStatus').checked,
+        orderStatus: false
       };
-      createOrder(payload).then(({ name }) => {
+      createCustomer(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateOrder(patchPayload).then(() => {
+        updateCustomer(patchPayload).then(() => {
           getOrder().then(viewOrders);
         });
       });
@@ -35,7 +35,7 @@ const formEvents = () => {
         customerPhone: document.querySelector('#customerPhone').value,
         customerEmail: document.querySelector('#customerEmail').value,
         orderType: document.querySelector('#orderType').value,
-        orderStatus: document.querySelector('#orderStatus').checked,
+        orderStatus: false,
         firebaseKey,
       };
       updateOrder(payload).then(() => {
@@ -63,35 +63,6 @@ const formEvents = () => {
         itemName: document.querySelector('#itemName').value,
         itemPrice: document.querySelector('#itemPrice').value,
         firebaseKey,
-      };
-      updateItems(payload).then(() => {
-        getItems().then(orderDetails);
-      });
-    }
-
-    // SUBMIT ITEM
-    if (e.target.id.includes('submit-item')) {
-      const payload = {
-        itemName: document.querySelector('#itemName').value,
-        itemPrice: document.querySelector('#itemPrice').value,
-      };
-      createItems(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-
-        updateItems(patchPayload).then(() => {
-          getOrderItems().then(orderDetails);
-        });
-      });
-    }
-
-    // EDIT IITEM
-    if (e.target.id.includes('edit-item')) {
-      const [, firebaseKey] = e.target.id.split('--');
-      const payload = {
-        itemName: document.querySelector('#itemName').value,
-        itemPrice: document.querySelector('#itemPrice').value,
-        // Order: document.querySelector('#Order').value
-        firebaseKey
       };
       updateItems(payload).then(() => {
         getItems().then(orderDetails);
